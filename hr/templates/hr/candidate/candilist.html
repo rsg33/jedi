@@ -1,0 +1,24 @@
+{% extends "hr/base.html" %}
+{% block title %}My Blog{% endblock %}
+{% block content %}
+  <h1>Список кандидатов</h1>
+   <form action="inpadavan" method="POST">
+  {% csrf_token %}
+  {% for candidat in candidats %}
+     <h3>Кандидат в падаваны</h3>
+     <p><input name="{{ candidat.id }}" type="checkbox" value="{{ candidat.id }}">{{ candidat.name_c }}</p>
+     <p><b>Ответы:</b></p>
+     {% for answer in candidat.result %}
+     	{% if answer == '1' %}
+     	  <p>Дзен</p>	
+     	{% else %}
+     	  <p>Не Дзен</p>	
+     	{% endif %}  
+     {% endfor %}
+   <hr>
+  {% endfor %}
+    <input type="submit" value="В ПАДАВАНЫ" >
+</form>
+<br><br>
+<p><a href="/">На главную</a></p>
+{% endblock %}

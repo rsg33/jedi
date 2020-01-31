@@ -1,0 +1,18 @@
+{% extends "hr/base.html" %}
+{% block title %}My Test{% endblock %}
+{% block content %}
+  <h1>Тестирование</h1>
+<h4>Чтобы пройти тестирование, необходимо выбрать минимум два "Дзен" </h4>
+ <form action="tested"method="POST">
+  {% csrf_token %}
+  {% for question in questions %}
+     <p><input name="{{ question.id }}" type="radio" value="0" checked> Не Дзен </p>
+     <p><input name="{{ question.id }}" type="radio" value="1"> Дзен</p>
+   <hr>
+  {% endfor %}
+    <input type="submit" value="Отправить" >
+    <br><br>
+<p><a href="/">На главную</a></p>
+</form>
+
+{% endblock %}

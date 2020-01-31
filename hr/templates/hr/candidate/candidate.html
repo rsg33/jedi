@@ -1,0 +1,16 @@
+{% extends "hr/base.html" %}
+{% block title %}My Blog{% endblock %}
+{% block content %}
+  <h1>Кто ты?</h1>
+<form action="tested"method="POST">
+ {% csrf_token %}
+ {% for jedi in jedis %}
+  <p><input name="jedi" type="radio" value="{{jedi.id}}">{{jedi.name_j}}</p>
+{% endfor %}
+    <input type="submit" value="Отправить" >
+    <br><br>
+<p><a href="/">На главную</a></p>
+</form>
+
+
+{% endblock %}
